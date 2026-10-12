@@ -1,5 +1,26 @@
 # Menu layout
 
+## Escape menu
+
+The menu canvas is now named EscapeMenuCanvas and starts inactive in both the
+prefab and SampleScene. EscapeMenuController is attached to the active UI root,
+outside that canvas. It uses the installed Unity Input System:
+`Keyboard.current.escapeKey.wasPressedThisFrame` in Update checks each new press.
+Update continues to run when Time.timeScale is zero, so Escape can also resume.
+
+Opening activates the entire menu canvas, pauses scaled game time, unlocks and
+shows the cursor. Closing restores the previous time scale and cursor state.
+The first button is labelled Fortsetzen and closes the menu. Other buttons keep
+their existing tutorial text actions. A dark translucent Image on the menu canvas
+provides a backdrop and blocks pointer clicks through to the gameplay UI.
+Sorting Order 10 puts the menu above the other canvas.
+
+The pause stops scaled time/physics; gameplay scripts that read input directly
+in Update still need to respect the pause state if such scripts are added later.
+In Unity, focus the Game view, press Escape, then press it again or click
+Fortsetzen. The controller's Pause Game checkbox can disable time pausing.
+Tools > Validate Escape Menu checks prefab wiring and open/close/resume behavior.
+
 The two screen-space canvases in `Assets/UI.prefab` use **Scale With Screen Size**, a
 1920 × 1080 reference resolution, and **Expand**. Both canvases therefore use the
 same scale. Expand preserves at least the reference canvas area at other aspect

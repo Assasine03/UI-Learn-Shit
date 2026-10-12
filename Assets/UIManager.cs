@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
         {
             if (co == (int)ButtonDefinitions.ToggleButton)
             {
-                button.onClick.AddListener(() => ShowHideCanvas());
+                // EscapeMenuController owns the first button (resume game).
             }
             else if (co == (int)ButtonDefinitions.ChangeText1)
             {
