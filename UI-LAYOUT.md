@@ -1,5 +1,62 @@
 # Menu layout
 
+## Gameplay HUD positioning
+
+The first canvas keeps Scale With Screen Size (1920 × 1080, Expand).
+Panel fills its canvas using anchors (0, 0) to (1, 1), zero offsets and scale 1.
+The panel's existing visual styling is unchanged.
+
+| Element | Anchors / pivot | Position | Size in reference units |
+| --- | --- | --- | --- |
+| Image | Top left / top left | (32, -32) | 292 × 126 |
+| Image (1) | Top right / top right | (-32, -32) | 292 × 126 |
+| Image (2) | Bottom horizontal stretch / bottom center | (0, 0) | Full width × 64 |
+| Image (3) | Bottom left / bottom left | (32, 96) | 292 × 126 |
+| Maske | Bottom center / bottom center | (0, 96) | 384 × 175 |
+
+The mask now clips a full-size, stretched HealthFill. HealthOutline is a stationary
+Image sibling immediately after the mask in the canvas hierarchy. It uses a
+transparent ellipse outline sprite matching the mask, so it remains visible even
+at zero health. Both share the same bottom-center anchors and dimensions.
+The two lower widgets have a 32-unit gap above the 64-unit progress placeholder.
+Corners use fixed reference sizes scaled by CanvasScaler; the progress placeholder
+and Panel additionally stretch to the actual canvas width. Obsolete positioning
+overrides were removed from SampleScene and UI (1) Variant so the prefab settings
+take effect. Slider and Scroll View were not edited; no HUD functions were added.
+Prefab references and geometric bounds were checked at six landscape/portrait
+resolutions; rendered appearance has not been verified in the Unity Game view.
+
+## Health display and U test key
+
+PlayerCharacter lives under the active UI root, outside the switchable canvases.
+Character stores Health (0–100, default 100). TakeDamage and SetHealth clamp the
+value and notify HealthChanged listeners. HealthBar on Maske subscribes when
+enabled and unsubscribes when disabled. It also refreshes on resizing and detects
+Play Mode Inspector edits. Its fill position is:
+
+`x = -maskWidth * (1 - Health / 100)`
+
+The fill remains the size of the mask and moves left; the mask hides overflow.
+HealthBar explicitly resets the fill's stretch anchors, pivot, sizeDelta (zero)
+and local scale (one) before positioning it. This prevents an old explicit width
+from being added to the mask width by stretch anchors. Unity validation checks
+actual RectTransform dimensions and that the right edge is outside the mask at 0.
+At 100/50/0 health, offsets are 0/−192/−384 for the current 384-unit width.
+This describes horizontal displacement, not the visible area percentage of an oval.
+
+LebenTest on PlayerCharacter uses the existing Input System and
+Keyboard.current.uKey.wasPressedThisFrame to apply 10 damage per new press.
+Damage is ignored while Time.timeScale is zero (Escape menu pause).
+For testing, focus the Game view and press U repeatedly; 10 presses empty the bar.
+Change Character's Health slider during Play Mode to try other values.
+Disable or remove LebenTest when replacing the test with gameplay damage.
+
+Validation: actual Character/HealthBar/LebenTest logic was compiled and exercised
+with lightweight Unity API stubs (limits, ten damage steps, display events,
+input press and pause). Prefab references and outline transparency were checked.
+Tools > Validate Health UI provides additional Unity prefab validation.
+Actual Unity import, input delivery and Game-view rendering remain unverified.
+
 ## Escape menu
 
 The menu canvas is now named EscapeMenuCanvas and starts inactive in both the
