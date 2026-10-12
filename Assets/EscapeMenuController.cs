@@ -7,6 +7,8 @@ public class EscapeMenuController : MonoBehaviour
 {
     [SerializeField] GameObject menuCanvas;
     [SerializeField] Button resumeButton;
+    [SerializeField] Button closeGameButton;
+    [SerializeField] SettingsMenuController settings;
     [SerializeField] bool pauseGame = true;
 
     bool isOpen;
@@ -26,6 +28,8 @@ public class EscapeMenuController : MonoBehaviour
         menuCanvas.SetActive(false);
         if (resumeButton != null)
             resumeButton.onClick.AddListener(CloseMenu);
+        if (closeGameButton != null)
+            closeGameButton.onClick.AddListener(CloseGame);
     }
 
     void Update()
@@ -52,6 +56,8 @@ public class EscapeMenuController : MonoBehaviour
         previousCursorLock = Cursor.lockState;
         previousCursorVisible = Cursor.visible;
         isOpen = true;
+        if (settings != null)
+            settings.CloseSettings();
         menuCanvas.SetActive(true);
 
         if (pauseGame)
@@ -67,6 +73,8 @@ public class EscapeMenuController : MonoBehaviour
             return;
 
         isOpen = false;
+        if (settings != null)
+            settings.CloseSettings();
         if (menuCanvas != null)
             menuCanvas.SetActive(false);
 
@@ -83,9 +91,21 @@ public class EscapeMenuController : MonoBehaviour
         CloseMenu();
     }
 
+    public void CloseGame()
+    {
+        CloseMenu();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
     void OnDestroy()
     {
         if (resumeButton != null)
             resumeButton.onClick.RemoveListener(CloseMenu);
+        if (closeGameButton != null)
+            closeGameButton.onClick.RemoveListener(CloseGame);
     }
 }

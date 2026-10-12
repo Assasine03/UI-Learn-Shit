@@ -67,8 +67,11 @@ Update continues to run when Time.timeScale is zero, so Escape can also resume.
 
 Opening activates the entire menu canvas, pauses scaled game time, unlocks and
 shows the cursor. Closing restores the previous time scale and cursor state.
-The first button is labelled Fortsetzen and closes the menu. Other buttons keep
-their existing tutorial text actions. A dark translucent Image on the menu canvas
+The first button is labelled Fortsetzen and closes the menu. Settings opens the
+settings window on Spiel. Lobby and Leave Mission have no callbacks yet. Close
+Game stops Play Mode in the editor (UNITY_EDITOR) or calls Application.Quit in a
+build. The old UIManager tutorial component is disabled so it does not attach
+text-changing callbacks to these buttons. A dark translucent Image on the menu canvas
 provides a backdrop and blocks pointer clicks through to the gameplay UI.
 Sorting Order 10 puts the menu above the other canvas.
 
@@ -77,6 +80,38 @@ in Update still need to respect the pause state if such scripts are added later.
 In Unity, focus the Game view, press Escape, then press it again or click
 Fortsetzen. The controller's Pause Game checkbox can disable time pausing.
 Tools > Validate Escape Menu checks prefab wiring and open/close/resume behavior.
+
+## Settings window
+
+MenuColumn has a purple MenuBackground child with stretch anchors and 48 extra
+units in both dimensions (24 units on each side). Layout Element > Ignore Layout
+is enabled, so this background does not participate in the vertical button layout.
+It is the first child, behind the other children. LogoSlot contains a blue Image
+with a centered LOGO label as a placeholder.
+
+SettingsWindow is an initially inactive child of EscapeMenuCanvas. It stretches
+to the available screen with 392 units of left margin, 32 right, and 64 top/bottom.
+Inside it, the four tab buttons share the header width equally. The green content
+area stretches between the header and the common footer. The common Zurück button
+remains visible on all tabs and closes Settings without resuming the game.
+
+SettingsMenuController on the active UI root owns the settings, tab and back
+callbacks. Two ordered arrays pair tabButtons with tabPanels: Spiel, Grafik,
+Audio, Sonstiges. SelectTab enables only the corresponding panel and updates
+button background and text colors (selected text red, other text white).
+OpenSettings always selects index 0. A local tabIndex captures each button's
+own index when registering its callback. Tab transitions are disabled so Unity's
+hover color does not overwrite the active-tab highlight.
+
+EscapeMenuController closes Settings when the Escape menu is closed or reopened.
+The window has no actual settings controls yet, only named placeholders.
+
+Validation: controller source was compiled and exercised against lightweight
+Unity API stubs, including each tab callback, highlights, Back from each tab,
+reopen on Spiel, resume cleanup and quit callback. Prefab references, parent/child
+links and layout bounds at six resolutions were checked. Tools > Validate Settings
+Menu provides Unity prefab/callback validation. Unity import, actual mouse input,
+Play Mode termination and rendered appearance have not been verified here.
 
 The two screen-space canvases in `Assets/UI.prefab` use **Scale With Screen Size**, a
 1920 × 1080 reference resolution, and **Expand**. Both canvases therefore use the
