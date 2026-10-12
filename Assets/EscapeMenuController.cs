@@ -9,6 +9,7 @@ public class EscapeMenuController : MonoBehaviour
     [SerializeField] Button resumeButton;
     [SerializeField] Button closeGameButton;
     [SerializeField] SettingsMenuController settings;
+    [SerializeField] EscapeMenuBackdrop backdrop;
     [SerializeField] bool pauseGame = true;
 
     bool isOpen;
@@ -41,6 +42,13 @@ public class EscapeMenuController : MonoBehaviour
 
     public void ToggleMenu()
     {
+        // ESC goes back one level; leave the pause menu and game state intact.
+        if (isOpen && settings != null && settings.IsOpen)
+        {
+            settings.CloseSettings();
+            return;
+        }
+
         if (isOpen)
             CloseMenu();
         else
@@ -58,7 +66,10 @@ public class EscapeMenuController : MonoBehaviour
         isOpen = true;
         if (settings != null)
             settings.CloseSettings();
-        menuCanvas.SetActive(true);
+        if (backdrop != null)
+            backdrop.Show();
+        else
+            menuCanvas.SetActive(true);
 
         if (pauseGame)
             Time.timeScale = 0f;
@@ -75,6 +86,8 @@ public class EscapeMenuController : MonoBehaviour
         isOpen = false;
         if (settings != null)
             settings.CloseSettings();
+        if (backdrop != null)
+            backdrop.Hide();
         if (menuCanvas != null)
             menuCanvas.SetActive(false);
 

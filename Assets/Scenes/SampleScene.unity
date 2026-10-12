@@ -747,6 +747,18 @@ PrefabInstance:
       propertyPath: health
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 950000000000000014, guid: b7d04f39f424d0e4fa900737230b3170, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 950000000000000015, guid: b7d04f39f424d0e4fa900737230b3170, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -155.8588
+      objectReference: {fileID: 0}
+    - target: {fileID: 950000000000000015, guid: b7d04f39f424d0e4fa900737230b3170, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 13.929382
+      objectReference: {fileID: 0}
     - target: {fileID: 1487882901356613932, guid: b7d04f39f424d0e4fa900737230b3170, type: 3}
       propertyPath: m_Size
       value: 1

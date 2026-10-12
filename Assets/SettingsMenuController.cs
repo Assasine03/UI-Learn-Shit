@@ -15,6 +15,8 @@ public class SettingsMenuController : MonoBehaviour
     readonly Color selectedColor = new Color(0.15f, 0.48f, 0.60f);
     UnityAction[] tabHandlers;
 
+    public bool IsOpen => settingsWindow != null && settingsWindow.activeSelf;
+
     void Awake()
     {
         settingsButton.onClick.AddListener(OpenSettings);

@@ -157,3 +157,20 @@ After importing, check SampleScene in Unity's Game view at 1920 × 1080,
 1280 × 720, 1024 × 768, 2560 × 1080, and 1080 × 1920. Check button clicks and
 canvas toggling as well. Prefab references and menu bounds were checked from
 the saved files; rendered appearance and input behavior require Unity testing.
+# ESC backdrop and Settings transparency
+
+EscapeMenuBackdrop enables the live EscapeMenuBlurFeature in both URP renderers.
+The two-pass Gaussian blur processes the current camera color each frame before
+the Screen Space Overlay canvases are drawn. No screenshot or RawImage is used.
+The menu canvas Image provides a separate black overlay at alpha 0.4 (40%
+darkening). The gameplay HUD and menu remain sharp. Camera rendering continues
+when Time.timeScale is zero, while ordinary game animations remain paused.
+The feature uses URP 17 Render Graph (compatibility mode must remain disabled).
+
+The orange Settings Image and all four green content Images use alpha 0.9:
+10% transparency. Labels and buttons retain their own opacity.
+SettingsWindowFrame replaces the orange Image mesh with four strips around
+the Content RectTransform. There is no orange surface underneath green.
+Without this cutout, two overlapping alpha-0.9 surfaces would transmit only
+0.1 * 0.1 = 1% of the background. The cutout follows the content's anchored
+rectangle when the canvas changes size.

@@ -1925,6 +1925,7 @@ GameObject:
   - component: {fileID: 5597572890688185910}
   - component: {fileID: 930000000000000001}
   - component: {fileID: 950000000000000103}
+  - component: {fileID: 960000000000000001}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -4068,6 +4069,7 @@ MonoBehaviour:
   resumeButton: {fileID: 8520905303386382128}
   closeGameButton: {fileID: 7432251670846177063}
   settings: {fileID: 950000000000000103}
+  backdrop: {fileID: 960000000000000001}
   pauseGame: 1
 --- !u!222 &930000000000000002
 CanvasRenderer:
@@ -4090,7 +4092,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.45}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.4}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4574,6 +4576,7 @@ GameObject:
   - component: {fileID: 950000000000000015}
   - component: {fileID: 950000000000000016}
   - component: {fileID: 950000000000000017}
+  - component: {fileID: 960000000000000006}
   m_Layer: 5
   m_Name: SettingsWindow
   m_TagString: Untagged
@@ -4624,7 +4627,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.95, g: 0.64, b: 0.47, a: 1}
+  m_Color: {r: 0.95, g: 0.64, b: 0.47, a: 0.9}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5116,7 +5119,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10, g: 0.40, b: 0.15, a: 1}
+  m_Color: {r: 0.10, g: 0.40, b: 0.15, a: 0.9}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5587,7 +5590,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10, g: 0.40, b: 0.15, a: 1}
+  m_Color: {r: 0.10, g: 0.40, b: 0.15, a: 0.9}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6058,7 +6061,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10, g: 0.40, b: 0.15, a: 1}
+  m_Color: {r: 0.10, g: 0.40, b: 0.15, a: 0.9}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6529,7 +6532,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10, g: 0.40, b: 0.15, a: 1}
+  m_Color: {r: 0.10, g: 0.40, b: 0.15, a: 0.9}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6966,3 +6969,31 @@ MonoBehaviour:
   - {fileID: 950000000000000052}
   - {fileID: 950000000000000069}
   - {fileID: 950000000000000086}
+
+--- !u!114 &960000000000000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657326915646890877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6304919763c4bf6a9303ccfd1c55301, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::EscapeMenuBackdrop
+  menuCanvas: {fileID: 6165222318326891479}
+  darkness: 0.4
+--- !u!114 &960000000000000006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950000000000000014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6304919763c4bf6a9303ccfd1c55302, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsWindowFrame
+  contentArea: {fileID: 950000000000000023}
