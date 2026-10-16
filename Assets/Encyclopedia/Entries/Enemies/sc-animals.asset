@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee78f2ee2d705425aa24bf535b01eaf0, type: 3}
-  m_Name: sc-roboter
+  m_Name: sc-animals
   m_EditorClassIdentifier: Assembly-CSharp::EncyclopediaEntry
-  id: roboter
-  title: "Roboter"
-  body: "Mechanische Gegner des Imperiums. Die Hunter Drone findet Ziele f\xFCr den
-    Destroyer. Eine Spider Bomb n\xE4hert sich dagegen unbemerkt."
+  id: sc-animals
+  title: Tiere
+  body: "Auch Tiere k\xF6nnen gef\xE4hrliche Gegner sein. Weitere Beobachtungen folgen."
   keywords: []
   children:
-  - {fileID: 11400000, guid: 4cd4d487398d5e828cd41caf17ea783d, type: 2}
-  - {fileID: 11400000, guid: 67db273ad4be5eefa36112d37cb3eeca, type: 2}
-  - {fileID: 11400000, guid: d837266dae3e5668a6ddcfc725d7a98b, type: 2}
+  - {fileID: 11400000, guid: f7ba3d33e4235b83bdf50633d2a9cf26, type: 2}
+  fonts: []

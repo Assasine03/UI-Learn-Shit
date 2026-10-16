@@ -13,8 +13,31 @@ MonoBehaviour:
   m_Name: corporation
   m_EditorClassIdentifier: Assembly-CSharp::EncyclopediaEntry
   id: corporation
-  title: "Die Corporation"
-  body: "Die Corporation entwickelt Technologie und handelt mit allen Fraktionen. Ajax beobachtet ihre Geschäfte."
+  title: Die Corporation
+  body: "Aurora SE ist das gr\xF6\xDFte Unternehmen im bemannten Weltraum und ein
+    bedeutender Anbieter von Energie, Finanzdienstleistungen, Weltrauminfrastruktur
+    und interstellarem Transport. Durch die Kontrolle \xFCber das \u201EGate\u201C,
+    einen Wurmlochgenerator an Bord der riesigen Orbitalstation \"Der Ring\u201C,
+    beherrscht Aurora SE faktisch den gesamten interstellaren Reiseverkehr.\n\n\xDCber
+    seine kommerziellen Aktivit\xE4ten hinaus fungiert Aurora SE als souver\xE4ner
+    Unternehmensstaat, der seinen B\xFCrgern Wohnraum, Gesundheitsversorgung, Bildung,
+    Besch\xE4ftigung und soziale Sicherheit gew\xE4hrleistet. Seine zentral geplante
+    Wirtschaft basiert auf kollektivem Eigentum, umfassender Automatisierung und
+    einem rangbasierten System von Privilegien. Die Unternehmensb\xFCrgerschaft erfordert
+    den Verzicht auf andere Staatsangeh\xF6rigkeiten.\n\nMit rund 1,42 Milliarden
+    Besch\xE4ftigten macht Aurora SE einen erheblichen Anteil der Menschheit aus.
+    Sein Einfluss erstreckt sich \xFCber das Sonnensystem und die f\xFCnf anderen
+    besiedelten Sternensysteme, in denen das Unternehmen gro\xDFe Arkologien und
+    Infrastruktur unterh\xE4lt. Obwohl weitgehend autark, betreibt das Unternehmen
+    weiterhin interstellaren Handel, um seinen diplomatischen Einfluss und seine
+    strategische Position zu st\xE4rken.\n\nAurora SE pr\xE4sentiert sich offiziell
+    als Kraft f\xFCr menschliche Einheit, technologischen Fortschritt und kollektiven
+    Wohlstand. Seine zentralisierte Regierungsf\xFChrung, die umfassende \xDCberwachung
+    der B\xFCrger und der undurchsichtige interne Sicherheitsapparat sind nach wie
+    vor Gegenstand von Kontroversen unter externen Regierungen und politischen Beobachtern."
   keywords:
-  - "Corporation"
-  children: []
+  - Corporation
+  - Aurora SE
+  children:
+  - {fileID: 11400000, guid: 3c510f07f24afe245ad291433c67a813, type: 2}
+  fonts: []

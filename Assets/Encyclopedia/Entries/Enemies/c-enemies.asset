@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee78f2ee2d705425aa24bf535b01eaf0, type: 3}
-  m_Name: rebellen
+  m_Name: c-enemies
   m_EditorClassIdentifier: Assembly-CSharp::EncyclopediaEntry
-  id: rebellen
-  title: "Die Rebellen"
-  body: "Die Rebellen kämpfen gegen das Imperium. Maja unterstützt sie bei der Aufklärung."
-  keywords:
-  - "Rebellen"
-  children: []
+  id: c-enemies
+  title: Gegner
+  body: "Hier findest du die bekannten Gegner. Roboter und Tiere haben unterschiedliche
+    F\xE4higkeiten."
+  keywords: []
+  children:
+  - {fileID: 11400000, guid: 72d662741ff65b55a4e0d1f64bca0b5b, type: 2}
+  - {fileID: 11400000, guid: 637cbe55198e521fb1cd8fcd84386efc, type: 2}
+  fonts: []
