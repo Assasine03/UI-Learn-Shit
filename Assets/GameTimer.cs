@@ -24,8 +24,10 @@ public class GameTimer : MonoBehaviour
     void UpdateDisplay()
     {
         long seconds = (long)Math.Floor(elapsedSeconds);
-        if (timerText == null || seconds == displayedSeconds)
+        if (seconds == displayedSeconds)
+        {
             return;
+        }
 
         displayedSeconds = seconds;
         // Total minutes keep counting past one hour instead of wrapping to zero.

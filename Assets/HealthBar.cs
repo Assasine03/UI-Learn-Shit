@@ -5,38 +5,32 @@ public class HealthBar : MonoBehaviour
     [SerializeField] Character character;
     [SerializeField] RectTransform fill;
     float displayedHealth = -1f;
+    float displayedWidth = -1f;
 
     void OnEnable()
     {
-        if (character != null)
-            character.HealthChanged += Refresh;
+        character.HealthChanged += Refresh;
 
-        Refresh(character != null ? character.Health : Character.MaxHealth);
+        Refresh(character.Health);
     }
 
     void OnDisable()
     {
-        if (character != null)
-            character.HealthChanged -= Refresh;
-    }
-
-    void OnRectTransformDimensionsChange()
-    {
-        Refresh(character != null ? character.Health : Character.MaxHealth);
+        character.HealthChanged -= Refresh;
     }
 
     void LateUpdate()
     {
         // Inspector edits bypass SetHealth, so keep those visible during Play Mode.
-        if (character != null && !Mathf.Approximately(displayedHealth, character.Health))
+        if (!Mathf.Approximately(displayedHealth, character.Health) ||
+            !Mathf.Approximately(displayedWidth, ((RectTransform)transform).rect.width))
+        {
             Refresh(character.Health);
+        }
     }
 
     void Refresh(float health)
     {
-        if (fill == null)
-            return;
-
         // Stretch adds sizeDelta to the parent's size. An old explicit width
         // would therefore make the fill wider than its mask.
         fill.anchorMin = Vector2.zero;
@@ -49,5 +43,6 @@ public class HealthBar : MonoBehaviour
         float width = ((RectTransform)transform).rect.width;
         fill.anchoredPosition = new Vector2(-width * (1f - fraction), 0f);
         displayedHealth = health;
+        displayedWidth = width;
     }
 }

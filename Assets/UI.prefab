@@ -6966,6 +6966,11 @@ MonoBehaviour:
   - {fileID: 950000000000000047}
   - {fileID: 950000000000000064}
   - {fileID: 950000000000000081}
+  tabLabels:
+  - {fileID: 950000000000000034}
+  - {fileID: 950000000000000051}
+  - {fileID: 950000000000000068}
+  - {fileID: 950000000000000085}
   tabPanels:
   - {fileID: 950000000000000035}
   - {fileID: 950000000000000052}
@@ -6985,6 +6990,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::EscapeMenuBackdrop
   menuCanvas: {fileID: 6165222318326891479}
+  overlay: {fileID: 930000000000000003}
   darkness: 0.4
 --- !u!114 &960000000000000006
 MonoBehaviour:

@@ -19,60 +19,57 @@ public class EscapeMenuController : MonoBehaviour
 
     void Awake()
     {
-        if (menuCanvas == null)
-        {
-            Debug.LogError("Assign the menu canvas to EscapeMenuController.", this);
-            enabled = false;
-            return;
-        }
-
         menuCanvas.SetActive(false);
-        if (resumeButton != null)
-            resumeButton.onClick.AddListener(CloseMenu);
-        if (closeGameButton != null)
-            closeGameButton.onClick.AddListener(CloseGame);
+        resumeButton.onClick.AddListener(CloseMenu);
+        closeGameButton.onClick.AddListener(CloseGame);
     }
 
     void Update()
     {
         // A press is reported once, rather than on every frame while held.
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
             ToggleMenu();
+        }
     }
 
     public void ToggleMenu()
     {
         // ESC goes back one level; leave the pause menu and game state intact.
-        if (isOpen && settings != null && settings.IsOpen)
+        if (isOpen && settings.IsOpen)
         {
             settings.CloseSettings();
             return;
         }
 
         if (isOpen)
+        {
             CloseMenu();
+        }
         else
+        {
             OpenMenu();
+        }
     }
 
     public void OpenMenu()
     {
-        if (isOpen || menuCanvas == null)
+        if (isOpen)
+        {
             return;
+        }
 
         previousTimeScale = Time.timeScale;
         previousCursorLock = Cursor.lockState;
         previousCursorVisible = Cursor.visible;
         isOpen = true;
-        if (settings != null)
-            settings.CloseSettings();
-        if (backdrop != null)
-            backdrop.Show();
-        else
-            menuCanvas.SetActive(true);
+        settings.CloseSettings();
+        backdrop.Show();
 
         if (pauseGame)
+        {
             Time.timeScale = 0f;
+        }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -81,18 +78,19 @@ public class EscapeMenuController : MonoBehaviour
     public void CloseMenu()
     {
         if (!isOpen)
+        {
             return;
+        }
 
         isOpen = false;
-        if (settings != null)
-            settings.CloseSettings();
-        if (backdrop != null)
-            backdrop.Hide();
-        if (menuCanvas != null)
-            menuCanvas.SetActive(false);
+        settings.CloseSettings();
+        backdrop.Hide();
+        menuCanvas.SetActive(false);
 
         if (pauseGame)
+        {
             Time.timeScale = previousTimeScale;
+        }
 
         Cursor.lockState = previousCursorLock;
         Cursor.visible = previousCursorVisible;
@@ -116,9 +114,7 @@ public class EscapeMenuController : MonoBehaviour
 
     void OnDestroy()
     {
-        if (resumeButton != null)
-            resumeButton.onClick.RemoveListener(CloseMenu);
-        if (closeGameButton != null)
-            closeGameButton.onClick.RemoveListener(CloseGame);
+        resumeButton.onClick.RemoveListener(CloseMenu);
+        closeGameButton.onClick.RemoveListener(CloseGame);
     }
 }

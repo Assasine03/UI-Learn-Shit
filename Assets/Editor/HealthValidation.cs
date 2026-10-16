@@ -11,8 +11,8 @@ public static class HealthValidation
         GameObject root = PrefabUtility.LoadPrefabContents("Assets/UI.prefab");
         try
         {
-            Character character = root.GetComponentInChildren<Character>(true);
-            HealthBar bar = root.GetComponentInChildren<HealthBar>(true);
+            Character character = root.transform.Find("PlayerCharacter").GetComponent<Character>();
+            HealthBar bar = root.transform.Find("Canvas/Maske").GetComponent<HealthBar>();
             Require(character != null && bar != null, "Health components must be assigned.");
             var settings = new SerializedObject(bar);
             Require(settings.FindProperty("character").objectReferenceValue == character,
@@ -63,6 +63,8 @@ public static class HealthValidation
     static void Require(bool condition, string message)
     {
         if (!condition)
+        {
             throw new Exception(message);
+        }
     }
 }

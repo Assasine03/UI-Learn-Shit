@@ -10,8 +10,10 @@ public class SettingsWindowFrame : BaseMeshEffect
 
     public override void ModifyMesh(VertexHelper mesh)
     {
-        if (!IsActive() || contentArea == null || mesh.currentVertCount == 0)
+        if (!IsActive() || mesh.currentVertCount == 0)
+        {
             return;
+        }
 
         UIVertex source = UIVertex.simpleVert;
         mesh.PopulateUIVertex(ref source, 0);
@@ -35,7 +37,9 @@ public class SettingsWindowFrame : BaseMeshEffect
         float right, float top)
     {
         if (right <= left || top <= bottom)
+        {
             return;
+        }
 
         int first = mesh.currentVertCount;
         vertex.uv0 = new Vector4(0.5f, 0.5f, 0f, 0f);

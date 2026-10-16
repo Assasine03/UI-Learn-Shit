@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class EscapeMenuBackdrop : MonoBehaviour
 {
     [SerializeField] GameObject menuCanvas;
+    [SerializeField] Image overlay;
     [SerializeField, Range(0f, 1f)] float darkness = 0.4f;
     public static bool BlurActive { get; private set; }
 
@@ -13,9 +14,7 @@ public class EscapeMenuBackdrop : MonoBehaviour
 
     public void Show()
     {
-        Image overlay = menuCanvas.GetComponent<Image>();
-        if (overlay != null)
-            overlay.color = new Color(0f, 0f, 0f, darkness);
+        overlay.color = new Color(0f, 0f, 0f, darkness);
         BlurActive = true;
         menuCanvas.SetActive(true);
     }

@@ -13,7 +13,7 @@ public class LebenTest : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale > 0f && Keyboard.current != null &&
+        if (Time.timeScale > 0f &&
             Keyboard.current.uKey.wasPressedThisFrame)
         {
             character.TakeDamage(10f);

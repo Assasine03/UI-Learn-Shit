@@ -17,10 +17,16 @@ public class EscapeMenuBlurFeature : ScriptableRendererFeature
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        if (!EscapeMenuBackdrop.BlurActive || blurMaterial == null || !blurMaterial.shader.isSupported ||
+        if (!EscapeMenuBackdrop.BlurActive ||
             renderingData.cameraData.cameraType != CameraType.Game ||
             !renderingData.cameraData.resolveFinalTarget)
+        {
             return;
+        }
+        if (!blurMaterial.shader.isSupported)
+        {
+            throw new System.NotSupportedException("The ESC blur shader is not supported.");
+        }
         pass.material = blurMaterial;
         renderer.EnqueuePass(pass);
     }
@@ -33,7 +39,10 @@ public class EscapeMenuBlurFeature : ScriptableRendererFeature
         public override void RecordRenderGraph(RenderGraph graph, ContextContainer frameData)
         {
             var resources = frameData.Get<UniversalResourceData>();
-            if (resources.isActiveTargetBackBuffer) return;
+            if (resources.isActiveTargetBackBuffer)
+            {
+                throw new System.InvalidOperationException("ESC blur requires an intermediate color texture.");
+            }
             var source = resources.activeColorTexture;
             var description = graph.GetTextureDesc(source);
             description.clearBuffer = false;

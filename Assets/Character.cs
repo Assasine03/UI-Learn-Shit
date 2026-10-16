@@ -19,7 +19,9 @@ public class Character : MonoBehaviour
     {
         float nextHealth = Mathf.Clamp(value, 0f, MaxHealth);
         if (Mathf.Approximately(health, nextHealth))
+        {
             return;
+        }
 
         health = nextHealth;
         HealthChanged?.Invoke(health);

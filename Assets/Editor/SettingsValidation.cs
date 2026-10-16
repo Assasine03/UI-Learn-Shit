@@ -36,7 +36,7 @@ public static class SettingsValidation
                     var content = (GameObject)panels.GetArrayElementAtIndex(panel).objectReferenceValue;
                     Require(content.activeSelf == (panel == tab), "Only the selected panel can be active.");
                     var button = (Button)buttons.GetArrayElementAtIndex(panel).objectReferenceValue;
-                    var label = button.GetComponentInChildren<TMP_Text>(true);
+                    var label = (TMP_Text)data.FindProperty("tabLabels").GetArrayElementAtIndex(panel).objectReferenceValue;
                     Require(label.color == (panel == tab ? Color.red : Color.white), "Tab highlight must follow selection.");
                 }
                 back.onClick.Invoke();
@@ -56,6 +56,8 @@ public static class SettingsValidation
     static void Require(bool condition, string message)
     {
         if (!condition)
+        {
             throw new Exception(message);
+        }
     }
 }
