@@ -11,6 +11,8 @@ public class EncyclopediaIndex
     readonly Dictionary<string, EncyclopediaEntry> terms = new Dictionary<string, EncyclopediaEntry>(StringComparer.OrdinalIgnoreCase);
     readonly Regex links;
 
+    public IEnumerable<EncyclopediaEntry> Entries => entries.Values;
+
     public EncyclopediaIndex(EncyclopediaEntry root)
     {
         Add(root, new List<EncyclopediaEntry>());
@@ -66,17 +68,31 @@ public class EncyclopediaIndex
 
     public string ArticleText(EncyclopediaEntry current)
     {
-        // Match the original plain text once; generated links are never processed again.
-        var result = new System.Text.StringBuilder();
-        int position = 0;
-        foreach (Match match in links.Matches(current.Body))
+        // Search visible words, never tag names/attributes. Map matches back to
+        // formatted text, including phrases split by a bold/size/font tag.
+        EncyclopediaRichText.Parsed parsed = EncyclopediaRichText.Parse(current.Body);
+        var result = new System.Text.StringBuilder(parsed.FormattedText);
+        MatchCollection matches = links.Matches(parsed.VisibleText);
+        for (int i = matches.Count - 1; i >= 0; i--)
         {
-            result.Append(Plain(current.Body.Substring(position, match.Index - position)));
+            Match match = matches[i];
             EncyclopediaEntry target = terms[match.Value];
-            result.Append(target == current ? Plain(match.Value) : Link(target, match.Value));
-            position = match.Index + match.Length;
+            if (target == current)
+            {
+                continue;
+            }
+            bool customColor = false;
+            for (int character = match.Index; character < match.Index + match.Length; character++)
+            {
+                customColor |= parsed.ExplicitColor[character];
+            }
+            int start = parsed.CharacterOffsets[match.Index];
+            int end = parsed.CharacterOffsets[match.Index + match.Length - 1] + 1;
+            string opening = "<link=\"" + target.Id + "\"><u>" + (customColor ? "" : "<color=#FFD34D>");
+            string closing = (customColor ? "" : "</color>") + "</u></link>";
+            result.Insert(end, closing);
+            result.Insert(start, opening);
         }
-        result.Append(Plain(current.Body.Substring(position)));
         if (current.Children.Count > 0)
         {
             result.Append("\n\n<b>In dieser Kategorie</b>\n");

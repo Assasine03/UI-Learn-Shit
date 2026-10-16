@@ -14,9 +14,10 @@ public class EncyclopediaRow : MonoBehaviour
     {
         bool category = entry.Children.Count > 0;
         string marker = category ? (expanded ? "v  " : ">  ") : "    ";
-        label.text = marker + EncyclopediaIndex.Plain(entry.Title);
+        string title = EncyclopediaIndex.Plain(entry.Title);
+        label.text = category ? marker + title : marker + "<u>" + title + "</u>";
         label.margin = new Vector4(12f + depth * indent, 0f, 12f, 0f);
-        label.fontStyle = category ? FontStyles.Bold : FontStyles.Underline;
+        label.fontStyle = category ? FontStyles.Bold : FontStyles.Normal;
         label.color = selected ? new Color(0.45f, 0.85f, 1f) :
             (category ? Color.white : new Color(1f, 0.83f, 0.3f));
         // Accommodate wrapped titles as well as the minimum row height.

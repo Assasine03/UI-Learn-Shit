@@ -21,8 +21,8 @@ wird ein- und ausgeschaltet. `TreeRowTemplate` ist absichtlich deaktiviert.
 ## Vorhandenen Artikel ändern
 
 1. Wähle unter `Assets/Encyclopedia/Entries` die passende `.asset`-Datei.
-2. Ändere **Title** und **Body** im Inspector. Body ist reiner Text;
-   Leerzeilen erzeugen Absätze. Kein TMP- oder HTML-Markup nötig.
+2. Ändere **Überschrift** und Artikeltext im Inspector.
+   Leerzeilen erzeugen Absätze. Markiere Wörter und nutze die Formatierungsleiste.
 3. **Keywords** enthält zusätzliche Schreibweisen. Beim Imperium ist dies
    beispielsweise `Imperium`, während der eigentliche Titel `Das Imperium`
    lautet. Titel und Keywords werden automatisch verlinkt, unabhängig von
@@ -72,3 +72,42 @@ wenn es unabhängig eingebaut werden soll.
 **Tools > Validate Encyclopedia** prüft im Unity-Editor Daten, Verbindungen
 und die Navigation mit ESC. Darstellung, Scrollen und Textklicks zusätzlich
 im Play Mode bei verschiedenen Game-View-Auflösungen prüfen.
+
+## Artikel-Editor im Inspector
+
+Wähle ein Eintrag-Asset aus. Der eigene Inspector bietet:
+
+- **B**, **I**, **U**, **S** für Fett, Kursiv, Unterstreichen und Durchstreichen.
+- **Farbe** auswählen und **Anwenden** drücken.
+- **Größe** eingeben, `%` oder `pt` wählen und **Anwenden** drücken.
+  `120 %` ist relativ zur Grundschriftgröße des Artikels.
+- Ein **TMP Font Asset** in **Schrift** ziehen und **Anwenden** drücken.
+  Die Schrift wird direkt im Eintrag referenziert und zur Laufzeit registriert;
+  sie muss nicht in einem Resources-Ordner liegen.
+- **Alle Formate entfernen** entfernt Formatierungen im gesamten Artikel.
+- **Artikel speichern** speichert das ausgewählte Asset. Änderungen lassen sich
+  wie andere Inspector-Änderungen mit Strg+Z rückgängig machen.
+
+Markiere zuerst die gewünschten Wörter im Textfeld, dann verwende eine Taste
+oder **Anwenden**. Ohne Auswahl wird ein Platzhalter `Text` eingefügt und markiert.
+Die Auswahl bleibt nach dem Formatieren erhalten, sodass du mehrere Stile
+kombinieren kannst. Im Bearbeitungsfeld bleiben die Tags sichtbar; darunter
+zeigt eine echte, scrollbar gerenderte **TextMeshPro-Vorschau** das Ergebnis.
+Diese Vorschau ist keine Word-Oberfläche: Text wird oben eingegeben, unten
+wird seine Darstellung geprüft. Die Vorschau-Links sind nicht anklickbar.
+
+Automatische Artikel-Links funktionieren auch, wenn ein Artikelname durch
+Formatierungen unterbrochen ist, z.B. `Hunter <b>Drone</b>`. Explizit gesetzte
+Textfarben bleiben erhalten; solche Links werden weiterhin unterstrichen.
+Die Vorschau ermittelt den Wurzeleintrag anhand der Children-Verweise, auch
+bei Assets in Unterordnern. Bei einem noch nicht einsortierten neuen Artikel
+kennt sie zunächst nur dessen eigenen Unterbaum.
+
+Erlaubte Tags sind `b`, `i`, `u`, `s`, `size`, `color` und `font`.
+Falsch geschlossene oder verschachtelte Formatierungen zeigt die Vorschau
+als Fehler an. Mit Strg+Z oder **Alle Formate entfernen** kannst du sie korrigieren.
+HTML und manuelle `link`-Tags werden nicht ausgeführt; Links werden weiterhin
+automatisch aus Titeln und Suchbegriffen erstellt. Titel selbst bleiben reiner Text.
+
+**Tools > Validate Encyclopedia Formatting** prüft Formatierung und Verlinkung
+im Unity-Editor mit temporären Einträgen, ohne gespeicherte Artikel zu ändern.

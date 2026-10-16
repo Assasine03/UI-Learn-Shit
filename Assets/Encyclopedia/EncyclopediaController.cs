@@ -34,6 +34,13 @@ public class EncyclopediaController : MonoBehaviour
     {
         window.SetActive(false);
         index = new EncyclopediaIndex(rootEntry);
+        foreach (EncyclopediaEntry entry in index.Entries)
+        {
+            foreach (TMP_FontAsset font in entry.Fonts)
+            {
+                MaterialReferenceManager.AddFontAsset(font);
+            }
+        }
         selected = rootEntry;
         expanded.Add(rootEntry);
         closeButton.onClick.AddListener(Close);

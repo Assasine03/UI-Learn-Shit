@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EncyclopediaEntry
   id: encyclopedia
   title: "Enzyklop\xE4die"
-  body: "Willkommen! Links kannst du Kategorien aufklappen und Artikel ausw\xE4hlen.
-    Gelb unterstrichene Begriffe und die Adresse \xFCber dem Artikel sind anklickbar.\n\nLerne
-    das Imperium und seine Gegner kennen oder lies mehr \xFCber Styx."
+  body: "<u><b>Willkommen!</b></u> Links kannst du Kategorien aufklappen und Artikel
+    ausw\xE4hlen. Gelb unterstrichene Begriffe und die Adresse \xFCber dem Artikel
+    sind anklickbar.\n\nLerne das Imperium und seine Gegner kennen oder lies mehr
+    \xFCber Styx."
   keywords: []
   children:
   - {fileID: 11400000, guid: 7ddd3542b97f5a22ae90848cad897993, type: 2}
   - {fileID: 11400000, guid: 5f3a50405b845d4da3cf7032c37786ca, type: 2}
   - {fileID: 11400000, guid: 0e14b320b5dd541497eb35b8b7895460, type: 2}
   - {fileID: 11400000, guid: a044991ed9d9e0c428e98c13a2ee6ded, type: 2}
+  fonts: []
