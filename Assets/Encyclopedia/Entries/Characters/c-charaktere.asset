@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee78f2ee2d705425aa24bf535b01eaf0, type: 3}
+  m_Name: c-charaktere
+  m_EditorClassIdentifier: Assembly-CSharp::EncyclopediaEntry
+  id: charaktere
+  title: "Charaktere"
+  body: "Hier lernst du Styx, Maja und Ajax kennen."
+  keywords: []
+  children:
+  - {fileID: 11400000, guid: 110036d32cc05c7f9190cbd7d4da86fe, type: 2}
+  - {fileID: 11400000, guid: 64a73c8bbca35458a5084a4bdb88d449, type: 2}
+  - {fileID: 11400000, guid: 189d238abcef5ff78312ac60e6a18b3f, type: 2}

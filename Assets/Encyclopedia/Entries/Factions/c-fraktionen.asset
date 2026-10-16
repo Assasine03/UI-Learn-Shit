@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee78f2ee2d705425aa24bf535b01eaf0, type: 3}
+  m_Name: c-fraktionen
+  m_EditorClassIdentifier: Assembly-CSharp::EncyclopediaEntry
+  id: fraktionen
+  title: "Fraktionen"
+  body: "Die Fraktionen pr\xE4gen die Welt. Das Imperium, die Rebellen und die Corporation
+    verfolgen unterschiedliche Ziele."
+  keywords: []
+  children:
+  - {fileID: 11400000, guid: 85486bc228425b01b28a033d3084a36b, type: 2}
+  - {fileID: 11400000, guid: 36d5021d94c1577780bc08530fce82e3, type: 2}
+  - {fileID: 11400000, guid: 3037872ea54e54be8c2567f9b03e45e2, type: 2}

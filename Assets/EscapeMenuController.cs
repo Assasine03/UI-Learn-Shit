@@ -10,12 +10,15 @@ public class EscapeMenuController : MonoBehaviour
     [SerializeField] Button closeGameButton;
     [SerializeField] SettingsMenuController settings;
     [SerializeField] EscapeMenuBackdrop backdrop;
+    [SerializeField] EncyclopediaController encyclopedia;
     [SerializeField] bool pauseGame = true;
 
     bool isOpen;
     float previousTimeScale;
     CursorLockMode previousCursorLock;
     bool previousCursorVisible;
+
+    public bool IsOpen => isOpen;
 
     void Awake()
     {
@@ -35,6 +38,12 @@ public class EscapeMenuController : MonoBehaviour
 
     public void ToggleMenu()
     {
+        if (encyclopedia.IsOpen)
+        {
+            encyclopedia.Close();
+            return;
+        }
+
         // ESC goes back one level; leave the pause menu and game state intact.
         if (isOpen && settings.IsOpen)
         {
@@ -59,6 +68,7 @@ public class EscapeMenuController : MonoBehaviour
             return;
         }
 
+        encyclopedia.Close();
         previousTimeScale = Time.timeScale;
         previousCursorLock = Cursor.lockState;
         previousCursorVisible = Cursor.visible;

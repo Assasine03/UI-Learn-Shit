@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee78f2ee2d705425aa24bf535b01eaf0, type: 3}
+  m_Name: c-gegner
+  m_EditorClassIdentifier: Assembly-CSharp::EncyclopediaEntry
+  id: gegner
+  title: "Gegner"
+  body: "Hier findest du die bekannten Gegner. Roboter und Tiere haben unterschiedliche
+    F\xE4higkeiten."
+  keywords: []
+  children:
+  - {fileID: 11400000, guid: 72d662741ff65b55a4e0d1f64bca0b5b, type: 2}
+  - {fileID: 11400000, guid: 637cbe55198e521fb1cd8fcd84386efc, type: 2}

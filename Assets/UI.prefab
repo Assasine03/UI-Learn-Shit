@@ -1949,6 +1949,7 @@ Transform:
   - {fileID: 4370243613577248457}
   - {fileID: 7685139056028792781}
   - {fileID: 940000000000000012}
+  - {fileID: 8200000000000000002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5597572890688185910
@@ -4072,6 +4073,7 @@ MonoBehaviour:
   closeGameButton: {fileID: 7432251670846177063}
   settings: {fileID: 950000000000000103}
   backdrop: {fileID: 960000000000000001}
+  encyclopedia: {fileID: 8200000000000000003}
   pauseGame: 1
 --- !u!222 &930000000000000002
 CanvasRenderer:
@@ -7156,3 +7158,41 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
   timerText: {fileID: 970000000000000004}
+--- !u!1001 &8200000000000000001
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3301730286190869431}
+    m_Modifications:
+    - target: {fileID: 8100000000000000088, guid: 54a04d7b5dbb522f85acb3a328f0a15c, type: 3}
+      propertyPath: pauseMenu
+      value:
+      objectReference: {fileID: 930000000000000001}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54a04d7b5dbb522f85acb3a328f0a15c, type: 3}
+--- !u!224 &8200000000000000002 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8100000000000000002, guid: 54a04d7b5dbb522f85acb3a328f0a15c, type: 3}
+  m_PrefabInstance: {fileID: 8200000000000000001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8200000000000000003 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8100000000000000088, guid: 54a04d7b5dbb522f85acb3a328f0a15c, type: 3}
+  m_PrefabInstance: {fileID: 8200000000000000001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8200000000000000004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd0870413315f169b90d948c9349e45, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::EncyclopediaController
+--- !u!1 &8200000000000000004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8100000000000000001, guid: 54a04d7b5dbb522f85acb3a328f0a15c, type: 3}
+  m_PrefabInstance: {fileID: 8200000000000000001}
+  m_PrefabAsset: {fileID: 0}
